@@ -23,6 +23,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "uglify-js": "3.5.2"
   }
 }

@@ -13,7 +13,21 @@ window.bubbly = function (config) {
     const context = canvas.getContext("2d");
     context.shadowColor = c.shadowColor || "#fff";
     context.shadowBlur = c.blur || 4;
-    const gradient = context.createLinearGradient(0, 0, width, height);
+
+    let gradientLength = c.gradientLength || Math.sqrt(width/2 * width/2 + height/2 * height/2);
+
+    let gradientAngle = c.gradientAngle || -Math.PI / 4;
+
+    let centerX = (0 + width) /2;
+    let centerY = (0 + height) /2;
+
+    let startX = centerX - gradientLength * Math.cos(gradientAngle);
+    let startY = centerY - gradientLength * Math.sin(gradientAngle);
+
+    let endX = centerX + gradientLength * Math.cos(gradientAngle);
+    let endY = centerY + gradientLength * Math.sin(gradientAngle);
+
+    const gradient = context.createLinearGradient(startX, startY, endX, endY);
     gradient.addColorStop(0, c.colorStart || "#2AE");
     gradient.addColorStop(1, c.colorStop || "#17B");
     const nrBubbles = c.bubbles || Math.floor((width + height) * 0.02);
